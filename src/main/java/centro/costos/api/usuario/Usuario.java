@@ -1,9 +1,15 @@
 package centro.costos.api.usuario;
 
+import java.io.Serializable;
+
 import centro.costos.api.perfil.Perfil;
 
-public class Usuario {
+public class Usuario implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String nombreUsuario;
 	private String nombrePila;
 	private String apellidoPaterno;
