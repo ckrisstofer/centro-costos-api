@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Implementation-Title: centro-costos-api
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: cristoferherrerarivera
+Specification-Vendor: Pivotal Software, Inc.
+Specification-Title: centro-costos-api
+Implementation-Vendor-Id: com
+Build-Jdk: 1.8.0_171
+Specification-Version: 0.0.1-SNAPSHOT
+Implementation-URL: http://projects.spring.io/spring-boot/centro-costo
+ s-api/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+
