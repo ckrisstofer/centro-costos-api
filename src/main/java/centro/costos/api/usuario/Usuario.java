@@ -2,14 +2,22 @@ package centro.costos.api.usuario;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 import centro.costos.api.perfil.Perfil;
 
+@Entity
 public class Usuario implements Serializable{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	@Id
+	private Long id;
+
 	private String nombreUsuario;
 	private String nombrePila;
 	private String apellidoPaterno;
@@ -20,8 +28,9 @@ public class Usuario implements Serializable{
 		super();
 	}
 
-	public Usuario(String nombreUsuario, String nombrePila, String apellidoPaterno, String apellidoMaterno, Perfil perfil) {
+	public Usuario(Long id, String nombreUsuario, String nombrePila, String apellidoPaterno, String apellidoMaterno, Perfil perfil) {
 		super();
+		this.id = id;
 		this.nombreUsuario = nombreUsuario;
 		this.nombrePila = nombrePila;
 		this.apellidoPaterno = apellidoPaterno;
@@ -29,6 +38,13 @@ public class Usuario implements Serializable{
 		this.perfil = perfil;
 	}
 	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 	
 	public String getNombreUsuario() {
 		return nombreUsuario;
