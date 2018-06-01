@@ -3,6 +3,7 @@ package centro.costos.api.usuario;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,13 +23,19 @@ public class UsuarioController {
 	@Autowired
 	UsuarioService usuarioService;
 	
+	// Inyecta mapper de Dozer
+	@Autowired
+	Mapper mapper;
+	
 	@RequestMapping(value="/usuarios/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Usuario> getUsuario(@PathVariable("id") Long id){
+	public ResponseEntity<UsuarioResponse> getUsuario(@PathVariable("id") Long id){
 		Usuario usuario = usuarioService.findById(id);
+		UsuarioResponse usuarioResponse = mapper.map(usuario, UsuarioResponse.class);
+		
 		if(usuario == null) {
-			return new ResponseEntity<Usuario>(usuario, HttpStatus.NO_CONTENT);
+			return new ResponseEntity<UsuarioResponse>(usuarioResponse, HttpStatus.NO_CONTENT);
 		}
-		return new ResponseEntity<Usuario>(usuario,HttpStatus.OK);
+		return new ResponseEntity<UsuarioResponse>(usuarioResponse,HttpStatus.OK);
 	}
 	
 	@RequestMapping(value="/usuarios", method = RequestMethod.GET)
@@ -42,7 +49,9 @@ public class UsuarioController {
 	
 	
 	@RequestMapping(value="/usuarios",method = RequestMethod.POST)
-	public ResponseEntity<Void> crearUsuario(@RequestBody Usuario usuario,UriComponentsBuilder ucBuilder){
+	public ResponseEntity<Void> crearUsuario(@RequestBody UsuarioRequest usuarioRequest,UriComponentsBuilder ucBuilder){
+		Usuario usuario = mapper.map(usuarioRequest, Usuario.class);
+		
 		Usuario usuarioIngresado = usuarioService.save(usuario);
 		if(usuarioIngresado == null){
 			return new ResponseEntity<Void>(HttpStatus.CONFLICT);

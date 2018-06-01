@@ -22,7 +22,8 @@ public class Usuario implements Serializable{
 	private String nombrePila;
 	private String apellidoPaterno;
 	private String apellidoMaterno;
-	private Perfil perfil;
+	private int idPerfil;
+	private String password;
 	
 	public Usuario() {
 		super();
@@ -35,7 +36,6 @@ public class Usuario implements Serializable{
 		this.nombrePila = nombrePila;
 		this.apellidoPaterno = apellidoPaterno;
 		this.apellidoMaterno = apellidoMaterno;
-		this.perfil = perfil;
 	}
 	
 	public Long getId() {
@@ -71,12 +71,20 @@ public class Usuario implements Serializable{
 		this.apellidoMaterno = apellidoMaterno;
 	}
 
-	public Perfil getPerfil() {
-		return perfil;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setPerfil(Perfil perfil) {
-		this.perfil = perfil;
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public int getIdPerfil() {
+		return idPerfil;
+	}
+
+	public void setIdPerfil(int idPerfil) {
+		this.idPerfil = idPerfil;
 	}
 	
 	
