@@ -2,8 +2,9 @@ package centro.costos.api.usuario;
 
 import javax.validation.constraints.NotNull;
 
+import centro.costos.api.perfil.Perfil;
+
 public class UsuarioRequest {
-	private Long id;
 
 	@NotNull(message="El nombre de usuario es requerido")
 	private String nombreUsuario;
@@ -17,17 +18,12 @@ public class UsuarioRequest {
 	@NotNull(message="El apellido materno es requerido")
 	private String apellidoMaterno;
 	
-	@NotNull(message="El la contraseña es requerida")
+	@NotNull(message="La contraseña es requerida")
 	private String password;
 	
-	private int idPerfil;
+	@NotNull(message="El perfil es requerido")
+	private Perfil perfil;
 	
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
 	public String getNombreUsuario() {
 		return nombreUsuario;
 	}
@@ -59,10 +55,10 @@ public class UsuarioRequest {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public int getIdPerfil() {
-		return idPerfil;
+	public Perfil getPerfil() {
+		return perfil;
 	}
-	public void setIdPerfil(int idPerfil) {
-		this.idPerfil = idPerfil;
+	public void setPerfil(Perfil perfil) {
+		this.perfil = perfil;
 	}
 }

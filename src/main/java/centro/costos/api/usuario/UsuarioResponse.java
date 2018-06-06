@@ -3,21 +3,12 @@ package centro.costos.api.usuario;
 import centro.costos.api.perfil.Perfil;
 
 public class UsuarioResponse {
-	private Long id;
-
 	private String nombreUsuario;
 	private String nombrePila;
 	private String apellidoPaterno;
 	private String apellidoMaterno;
 	private Perfil perfil;
 	
-	
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
 	public String getNombreUsuario() {
 		return nombreUsuario;
 	}

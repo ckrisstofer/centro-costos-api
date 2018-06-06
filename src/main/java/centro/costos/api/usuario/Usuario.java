@@ -2,7 +2,10 @@ package centro.costos.api.usuario;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import centro.costos.api.perfil.Perfil;
@@ -16,36 +19,26 @@ public class Usuario implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	private Long id;
-
+    @Column(unique = true)
 	private String nombreUsuario;
 	private String nombrePila;
 	private String apellidoPaterno;
 	private String apellidoMaterno;
-	private int idPerfil;
+	private Perfil perfil;
 	private String password;
 	
 	public Usuario() {
 		super();
 	}
 
-	public Usuario(Long id, String nombreUsuario, String nombrePila, String apellidoPaterno, String apellidoMaterno, Perfil perfil) {
+	public Usuario(String nombreUsuario, String nombrePila, String apellidoPaterno, String apellidoMaterno, Perfil perfil) {
 		super();
-		this.id = id;
 		this.nombreUsuario = nombreUsuario;
 		this.nombrePila = nombrePila;
 		this.apellidoPaterno = apellidoPaterno;
 		this.apellidoMaterno = apellidoMaterno;
 	}
-	
-	public Long getId() {
-		return id;
-	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-	
 	public String getNombreUsuario() {
 		return nombreUsuario;
 	}
@@ -79,13 +72,11 @@ public class Usuario implements Serializable{
 		this.password = password;
 	}
 
-	public int getIdPerfil() {
-		return idPerfil;
+	public Perfil getPerfil() {
+		return perfil;
 	}
 
-	public void setIdPerfil(int idPerfil) {
-		this.idPerfil = idPerfil;
+	public void setPerfil(Perfil perfil) {
+		this.perfil = perfil;
 	}
-	
-	
 }

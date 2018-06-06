@@ -7,6 +7,7 @@ import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,7 +50,7 @@ public class UsuarioController {
 	
 	
 	@RequestMapping(value="/usuarios",method = RequestMethod.POST)
-	public ResponseEntity<Void> crearUsuario(@RequestBody UsuarioRequest usuarioRequest,UriComponentsBuilder ucBuilder){
+	public ResponseEntity<Void> crearUsuario(@RequestBody @Validated UsuarioRequest usuarioRequest,UriComponentsBuilder ucBuilder){
 		Usuario usuario = mapper.map(usuarioRequest, Usuario.class);
 		
 		Usuario usuarioIngresado = usuarioService.save(usuario);
